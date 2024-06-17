@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  html {
+    overflow: -moz-scrollbars-vertical;
+    overflow-y: scroll;
+    background-color: #ecfffa;
+  }
+
+  @variants responsive {
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    .no-scrollbar {
+      -ms-overflow-style: none; /* IE and Edge */
+      scrollbar-width: none; /* Firefox */
+    }
+
+    .loading {
+      filter: blur(10px);
+      clip-path: inset(0);
+    }
+    .loaded {
+      filter: blur(0px);
+      transition: filter 0.5s linear;
+    }
+  }
+}
