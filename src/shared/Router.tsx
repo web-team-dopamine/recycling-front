@@ -2,6 +2,9 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
 import {
+  Admin,
+  AdminProduct,
+  AdminReport,
   Join,
   Login,
   Main,
@@ -40,6 +43,10 @@ const Router = () => {
         <Route path="/user/:id/basket" element={<MyBasket />} />
         <Route path="/user/:id/pay" element={<Pay />} />
         <Route path="/user/:id/payend" element={<PayEnd />} />
+
+        <Route path="/admin" element={<Admin />} />
+        <Route path="/admin/:productid" element={<AdminProduct />} />
+        <Route path="/admin/:reportid" element={<AdminReport />} />
 
         <Route path="/*" element={<NotFound />} />
       </Routes>
