@@ -19,6 +19,7 @@ import {
   ProductPost,
   Protection,
   ProtectionPost,
+  SellProductPost,
 } from "../pages";
 
 const Router = () => {
@@ -47,6 +48,8 @@ const Router = () => {
         <Route path="/admin" element={<Admin />} />
         <Route path="/admin/:productid" element={<AdminProduct />} />
         <Route path="/admin/:reportid" element={<AdminReport />} />
+
+        <Route path="/seller/post" element={<SellProductPost />} />
 
         <Route path="/*" element={<NotFound />} />
       </Routes>

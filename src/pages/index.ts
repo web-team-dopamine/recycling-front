@@ -21,6 +21,8 @@ import Protection from "./Protection";
 import ProtectionDetail from "./ProtectionDetail";
 import ProtectionPost from "./ProtectionPost";
 
+import SellProductPost from "./SellProductPost";
+
 import NotFound from "./NotFound";
 
 export {
@@ -42,4 +44,5 @@ export {
   ProtectionDetail,
   ProtectionPost,
   NotFound,
+  SellProductPost,
 };
