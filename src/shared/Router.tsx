@@ -18,14 +18,18 @@ import {
   ProductDetail,
   ProductPost,
   Protection,
+  ProtectionDetail,
   ProtectionPost,
   SellProductPost,
 } from "../pages";
 
 const Router = () => {
+  const isLoggedIn = true; // 로그인 여부에 따라 수정
+  const userType: "admin" | "seller" | "user" = "admin"; // 사용자 타입에 따라 수정
+
   return (
     <BrowserRouter>
-      <Header />
+      <Header isLoggedIn={isLoggedIn} userType={userType} />
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/join" element={<Join />} />
@@ -35,7 +39,10 @@ const Router = () => {
         <Route path="/product/post" element={<ProductPost />} />
 
         <Route path="/protection" element={<Protection />} />
-        <Route path="/protection/:protectionid" element={<ProductDetail />} />
+        <Route
+          path="/protection/:protectionid"
+          element={<ProtectionDetail />}
+        />
         <Route path="/protection/post" element={<ProtectionPost />} />
 
         <Route path="/user/:id" element={<MyPage />} />
