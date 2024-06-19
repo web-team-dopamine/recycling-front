@@ -27,7 +27,6 @@ const UserTypeSelection = () => {
             type="radio"
             name="userType"
             id="radioBuyer"
-            defaultChecked
           />
           <label className="cursor-pointer text-sm" htmlFor="radioBuyer">
             구매자
