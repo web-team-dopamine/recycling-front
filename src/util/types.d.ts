@@ -5,3 +5,8 @@ declare interface JoinForm {
   password: string;
   address: string;
 }
+
+declare interface AddressData {
+  zonecode: string;
+  address: string;
+}
