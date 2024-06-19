@@ -5,9 +5,9 @@ const UserTypeSelection = () => {
     <>
       <label
         htmlFor="usertype"
-        className="block text-gray-700 text-m font-bold mb-2"
+        className="block text-gray-700 text-m font-bold mb-3"
       >
-        이메일<span className="text-red-600">*</span>
+        회원 유형 선택<span className="text-red-600">*</span>
       </label>
       <div className="flex">
         <div className="flex items-center mb-2">
