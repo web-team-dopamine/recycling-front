@@ -27,8 +27,8 @@ const EmailInput = () => {
       <div className="flex">
         <input
           type="text"
-          id="nickname"
-          name="nickname"
+          id="email"
+          name="email"
           placeholder="이메일을 입력하세요"
           value={emailInput.value}
           onChange={emailInput.onChange}

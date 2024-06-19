@@ -20,8 +20,8 @@ const PasswordInput = () => {
       <div className="flex flex-col">
         <input
           type="text"
-          id="nickname"
-          name="nickname"
+          id="password"
+          name="password"
           placeholder="비밀번호를 입력하세요"
           value={passwordInput.value}
           onChange={passwordInput.onChange}
@@ -29,8 +29,8 @@ const PasswordInput = () => {
         />
         <input
           type="text"
-          id="nickname"
-          name="nickname"
+          id="passwordCheck"
+          name="passwordCheck"
           placeholder="비밀번호를 다시 한 번 입력하세요"
           value={passwordCheckInput.value}
           onChange={passwordCheckInput.onChange}
