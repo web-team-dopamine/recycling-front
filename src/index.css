@@ -7,6 +7,7 @@
     overflow: -moz-scrollbars-vertical;
     overflow-y: scroll;
     background-color: #ecfffa;
+    overflow-x: hidden;
   }
 
   @variants responsive {
