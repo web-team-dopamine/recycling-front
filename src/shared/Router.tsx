@@ -28,7 +28,7 @@ import {
 
 const Router = () => {
   const isLoggedIn = true; // 로그인 여부에 따라 수정
-  const userType: 'admin' | 'seller' | 'user' = 'admin'; // 사용자 타입에 따라 수정
+  const userType: 'admin' | 'seller' | 'user' = 'user'; // 사용자 타입에 따라 수정
 
   return (
     <BrowserRouter>
