@@ -1,5 +1,5 @@
 declare interface JoinForm {
-  userType: 'buyer' | 'seller';
+  userType: 'user' | 'seller';
   nickname: string;
   email: string;
   password: string;
@@ -27,4 +27,12 @@ declare interface ProductItemProps {
   title: string;
   company: string;
   price: string;
+}
+
+declare interface ProtectionItemProps {
+  image: string;
+  title: string;
+  nickname: string;
+  date: string;
+  likes: number;
 }
