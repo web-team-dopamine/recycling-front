@@ -1,10 +1,13 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Header from "./Header";
-import Footer from "./Footer";
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Header from './Header';
+import Footer from './Footer';
 import {
   Admin,
+  AdminMembers,
+  AdminMileage,
   AdminProduct,
   AdminReport,
+  CompanyMain,
   Join,
   Login,
   Main,
@@ -17,15 +20,15 @@ import {
   PayEnd,
   ProductDetail,
   ProductPost,
+  Products,
   Protection,
   ProtectionDetail,
   ProtectionPost,
-  SellProductPost,
-} from "../pages";
+} from '../pages';
 
 const Router = () => {
   const isLoggedIn = true; // 로그인 여부에 따라 수정
-  const userType: "admin" | "seller" | "user" = "admin"; // 사용자 타입에 따라 수정
+  const userType: 'admin' | 'seller' | 'user' = 'admin'; // 사용자 타입에 따라 수정
 
   return (
     <BrowserRouter>
@@ -35,6 +38,8 @@ const Router = () => {
         <Route path="/join" element={<Join />} />
         <Route path="/login" element={<Login />} />
 
+        <Route path="/:companyid" element={<CompanyMain />} />
+        <Route path="/products" element={<Products />} />
         <Route path="/product/:productid" element={<ProductDetail />} />
         <Route path="/product/post" element={<ProductPost />} />
 
@@ -55,8 +60,8 @@ const Router = () => {
         <Route path="/admin" element={<Admin />} />
         <Route path="/admin/:productid" element={<AdminProduct />} />
         <Route path="/admin/:reportid" element={<AdminReport />} />
-
-        <Route path="/seller/post" element={<SellProductPost />} />
+        <Route path="/admin/:memberid" element={<AdminMembers />} />
+        <Route path="/admin/:milegeid" element={<AdminMileage />} />
 
         <Route path="/*" element={<NotFound />} />
       </Routes>

@@ -1,34 +1,38 @@
-import Admin from "./Admin";
-import AdminProduct from "./AdminProduct";
-import AdminReport from "./AdminReport";
+import Admin from './Admin';
+import AdminProduct from './AdminProduct';
+import AdminReport from './AdminReport';
+import AdminMembers from './AdminMembers';
+import AdminMileage from './AdminMileage';
 
-import Main from "./Main";
-import Join from "./Join";
-import Login from "./Login";
+import Main from './Main';
+import Join from './Join';
+import Login from './Login';
 
-import MyBasket from "./MyBasket";
-import MyBookMark from "./MyBookMark";
-import MyComment from "./MyComment";
-import MyPage from "./MyPage";
+import MyBasket from './MyBasket';
+import MyBookMark from './MyBookMark';
+import MyComment from './MyComment';
+import MyPage from './MyPage';
 
-import Pay from "./Pay";
-import PayEnd from "./PayEnd";
+import Pay from './Pay';
+import PayEnd from './PayEnd';
 
-import ProductDetail from "./ProductDetail";
-import ProductPost from "./ProductPost";
+import CompanyMain from './CompanyMain';
+import Products from './Products';
+import ProductDetail from './ProductDetail';
+import ProductPost from './ProductPost';
 
-import Protection from "./Protection";
-import ProtectionDetail from "./ProtectionDetail";
-import ProtectionPost from "./ProtectionPost";
+import Protection from './Protection';
+import ProtectionDetail from './ProtectionDetail';
+import ProtectionPost from './ProtectionPost';
 
-import SellProductPost from "./SellProductPost";
-
-import NotFound from "./NotFound";
+import NotFound from './NotFound';
 
 export {
   Admin,
   AdminProduct,
   AdminReport,
+  AdminMembers,
+  AdminMileage,
   Main,
   Join,
   Login,
@@ -38,11 +42,12 @@ export {
   MyPage,
   Pay,
   PayEnd,
+  CompanyMain,
+  Products,
   ProductDetail,
   ProductPost,
   Protection,
   ProtectionDetail,
   ProtectionPost,
   NotFound,
-  SellProductPost,
 };
