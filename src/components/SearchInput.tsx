@@ -1,5 +1,5 @@
-import useInput from '../../hooks/useInput';
 import { IoIosSearch } from 'react-icons/io';
+import useInput from '../hooks/useInput';
 
 const SearchInput = () => {
   const searchInput = useInput({ initialValue: '' });
