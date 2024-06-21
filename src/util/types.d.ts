@@ -10,3 +10,14 @@ declare interface AddressData {
   zonecode: string;
   address: string;
 }
+
+declare type DataItem = any; // item 오류 사전 방지
+
+declare interface PaginationResult {
+  currentPage: number;
+  currentItems: DataItem[];
+  totalPages: number;
+  paginate: (pageNumber: number) => void;
+  goToPrevPage: () => void;
+  goToNextPage: () => void;
+}
