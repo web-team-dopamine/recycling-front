@@ -21,3 +21,10 @@ declare interface PaginationResult {
   goToPrevPage: () => void;
   goToNextPage: () => void;
 }
+
+declare interface ProductItemProps {
+  image: string;
+  title: string;
+  company: string;
+  price: string;
+}
