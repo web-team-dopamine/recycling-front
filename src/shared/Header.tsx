@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { SlBasket } from 'react-icons/sl';
+import { FaShoppingCart } from 'react-icons/fa';
 import { FaRegUserCircle } from 'react-icons/fa';
 
 type HeaderProps = {
@@ -60,7 +60,7 @@ const Header: React.FC<HeaderProps> = ({ isLoggedIn, userType }) => {
                   className="text-white hover:text-[#2E9093]"
                   onClick={() => navigate('/user/:id/basket')}
                 >
-                  <SlBasket className="w-6 h-6" />
+                  <FaShoppingCart className="w-6 h-6" />
                 </button>
                 <button
                   className="text-white hover:text-[#2E9093]"
