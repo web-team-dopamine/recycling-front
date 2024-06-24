@@ -1,5 +1,5 @@
 declare interface JoinForm {
-  userType: 'buyer' | 'seller';
+  userType: 'user' | 'seller';
   nickname: string;
   email: string;
   password: string;
@@ -9,4 +9,30 @@ declare interface JoinForm {
 declare interface AddressData {
   zonecode: string;
   address: string;
+}
+
+declare type DataItem = any; // item 오류 사전 방지
+
+declare interface PaginationResult {
+  currentPage: number;
+  currentItems: DataItem[];
+  totalPages: number;
+  paginate: (pageNumber: number) => void;
+  goToPrevPage: () => void;
+  goToNextPage: () => void;
+}
+
+declare interface ProductItemProps {
+  image: string;
+  title: string;
+  company: string;
+  price: string;
+}
+
+declare interface ProtectionItemProps {
+  image: string;
+  title: string;
+  nickname: string;
+  date: string;
+  likes: number;
 }
