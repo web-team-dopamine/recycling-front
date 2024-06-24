@@ -2,11 +2,6 @@ import { useNavigate } from 'react-router-dom';
 import { FaShoppingCart } from 'react-icons/fa';
 import { FaRegUserCircle } from 'react-icons/fa';
 
-type HeaderProps = {
-  isLoggedIn: boolean;
-  userType: 'admin' | 'seller' | 'user';
-};
-
 const Header: React.FC<HeaderProps> = ({ isLoggedIn, userType }) => {
   const navigate = useNavigate();
 
