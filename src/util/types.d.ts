@@ -36,3 +36,8 @@ declare interface ProtectionItemProps {
   date: string;
   likes: number;
 }
+
+declare type HeaderProps = {
+  isLoggedIn: boolean;
+  userType: 'admin' | 'seller' | 'user';
+};
