@@ -1,4 +1,5 @@
-import { Banner, ItemList, PostButton } from '../components/ProductMain';
+import { Banner, PostButton } from '../components/Common';
+import ItemList from '../components/ProductMain/ItemList';
 import SearchInput from '../hooks/useSearch';
 
 interface ProductsProps {

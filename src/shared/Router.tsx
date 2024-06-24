@@ -38,7 +38,10 @@ const Router = () => {
         <Route path="/join" element={<Join />} />
         <Route path="/login" element={<Login />} />
 
-        <Route path="/:companyid" element={<CompanyMain />} />
+        <Route
+          path="/:companyid"
+          element={<CompanyMain userType={userType} isLoggedIn={isLoggedIn} />}
+        />
         <Route
           path="/products"
           element={<Products isLoggedIn={isLoggedIn} userType={userType} />}
