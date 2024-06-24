@@ -3,16 +3,28 @@ import { BiLike } from 'react-icons/bi';
 import { useNavigate } from 'react-router-dom';
 import useModal from '../../hooks/useModal';
 
-const ProtectionItem = ({
+interface ProtectionItemProps {
+  image: string;
+  title: string;
+  nickname: string;
+  date: Date;
+  likes: number;
+  onLike: () => void; // Adjust the type of onLike function to match the change in ProtectionItemList.tsx
+  initialLiked: boolean;
+}
+
+const ProtectionItem: React.FC<ProtectionItemProps> = ({
   image,
   title,
   nickname,
   date,
   likes,
-}: ProtectionItemProps) => {
+  onLike,
+  initialLiked,
+}) => {
   const navigate = useNavigate();
   const [hovered, setHovered] = useState(false);
-  const [liked, setLiked] = useState(false); // 좋아요 클릭 여부
+  const [liked, setLiked] = useState(initialLiked); // State to manage liked status
 
   const {
     openModal: openLikeModal,
@@ -20,15 +32,16 @@ const ProtectionItem = ({
     Modal: LikeModal,
   } = useModal();
 
-  // 임의로 로그인했다고 표시
+  // Dummy function for checking if user is logged in
   const isLoggedIn = () => {
-    return true;
+    return true; // Replace with actual authentication check
   };
 
-  // 좋아요 클릭
+  // Handle like button click
   const handleLikeClick = () => {
     if (isLoggedIn()) {
-      setLiked((prevLiked) => !prevLiked); // Toggle liked state
+      setLiked(!liked); // Toggle liked state
+      onLike(); // Call parent component's onLike function to update likes count
       closeLikeModal(); // Close modal if open
     } else {
       openLikeModal(); // Open login modal if not logged in
@@ -41,11 +54,13 @@ const ProtectionItem = ({
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
+      {/* Image and overlay */}
       <div className="relative">
         <img className="w-full h-34 object-cover" src={image} alt={title} />
         {hovered && (
           <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 transition-opacity duration-300">
             <div className="text-white text-center">
+              {/* Like button */}
               <button
                 className={`text-gray-400 hover:text-gray-500 mr-1 `}
                 onClick={handleLikeClick}
@@ -59,6 +74,8 @@ const ProtectionItem = ({
           </div>
         )}
       </div>
+
+      {/* Title and information */}
       <div
         className="px-4 py-4 cursor-pointer"
         onClick={() => navigate('/protection/:id')}
@@ -76,7 +93,7 @@ const ProtectionItem = ({
         </p>
       </div>
 
-      {/* 좋아요 버튼 클릭 modal */}
+      {/* Like modal */}
       <LikeModal>
         {isLoggedIn() ? (
           <></> // No content when logged in and liked
