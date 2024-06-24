@@ -49,7 +49,10 @@ const Router = () => {
         <Route path="/product/:productid" element={<ProductDetail />} />
         <Route path="/product/post" element={<ProductPost />} />
 
-        <Route path="/protection" element={<Protection />} />
+        <Route
+          path="/protection"
+          element={<Protection isLoggedIn={isLoggedIn} userType={userType} />}
+        />
         <Route
           path="/protection/:protectionid"
           element={<ProtectionDetail />}
