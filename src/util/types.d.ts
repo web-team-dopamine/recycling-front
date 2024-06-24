@@ -33,8 +33,8 @@ declare interface ProtectionItemProps {
   image: string;
   title: string;
   nickname: string;
-  date: string;
   likes: number;
+  date: Date;
 }
 
 declare type HeaderProps = {
