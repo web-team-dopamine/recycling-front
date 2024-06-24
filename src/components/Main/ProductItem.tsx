@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { FaHeart, FaShoppingCart } from 'react-icons/fa'; // Importing icons for wishlist and cart
 import { useNavigate } from 'react-router-dom';
 import useModal from '../../hooks/useModal';
@@ -8,8 +8,23 @@ const ProductItem = ({ image, title, company, price }: ProductItemProps) => {
   const [hovered, setHovered] = useState(false);
 
   // 좋아요, 장바구니 추가 관련 modal
-  const { openModal: openMarkModal, Modal: MarkModal } = useModal();
-  const { openModal: openCartModal, Modal: CartModal } = useModal();
+  const {
+    openModal: openMarkModal,
+    closeModal: closeMarkModal,
+    Modal: MarkModal,
+  } = useModal();
+  const {
+    openModal: openCartModal,
+    closeModal: closeCartModal,
+    Modal: CartModal,
+  } = useModal();
+
+  // 확인 modal
+  const {
+    openModal: openConfirmModal,
+    closeModal: closeConfirmModal,
+    Modal: ConfirmModal,
+  } = useModal();
 
   // 임의로 login 했다고 가정
   const isLoggedIn = () => {
@@ -57,16 +72,22 @@ const ProductItem = ({ image, title, company, price }: ProductItemProps) => {
       <MarkModal>
         {isLoggedIn() ? (
           <>
-            <div className="text-gray-800 mb-4 text-l">
-              찜에 추가되었습니다!
-              <br />
+            <div className="text-gray-800 mb-4">
+              이 상품을 찜 리스트에 추가하시겠습니까?
+            </div>
+            <div className="flex justify-between">
               <button
-                onClick={() => navigate('/user/:id/bookmark')}
-                className="text-[#2E9093] hover:text-opacity-60 underline"
+                className="underline text-gray-800 px-4 py-2 rounded hover:text-[#2E9093]"
+                onClick={openConfirmModal}
               >
-                [마이페이지 &gt; 찜 보러가기]
+                예
               </button>
-              에서 찾을 수 있습니다.
+              <button
+                className="underline text-gray-800 px-4 py-2 rounded hover:text-[#2E9093]"
+                onClick={closeMarkModal}
+              >
+                아니요
+              </button>
             </div>
           </>
         ) : (
@@ -86,16 +107,22 @@ const ProductItem = ({ image, title, company, price }: ProductItemProps) => {
       <CartModal>
         {isLoggedIn() ? (
           <>
-            <div className="text-gray-800 mb-4 text-l">
-              장바구니에 추가되었습니다!
-              <br />
+            <div className="text-gray-800 mb-4">
+              이 상품을 장바구니에 추가하시겠습니까?
+            </div>
+            <div className="flex justify-between">
               <button
-                onClick={() => navigate('/user/:id/basket')}
-                className="text-[#2E9093] hover:text-opacity-60 underline"
+                className="underline text-gray-800 px-4 py-2 rounded hover:text-[#2E9093]"
+                onClick={openConfirmModal}
               >
-                [장바구니 보러가기]
+                예
               </button>
-              에서 찾을 수 있습니다.
+              <button
+                className="underline text-gray-800 px-4 py-2 rounded hover:text-[#2E9093]"
+                onClick={closeCartModal}
+              >
+                아니요
+              </button>
             </div>
           </>
         ) : (
@@ -110,6 +137,21 @@ const ProductItem = ({ image, title, company, price }: ProductItemProps) => {
           </>
         )}
       </CartModal>
+
+      {/* 확인 modal */}
+      <ConfirmModal>
+        <div className="text-gray-800 mb-4">추가되었습니다!</div>
+        <button
+          className="bg-[#2E9093] text-white px-4 py-2 rounded hover:bg-opacity-80 mr-2"
+          onClick={() => {
+            closeConfirmModal();
+            closeCartModal();
+            closeMarkModal();
+          }}
+        >
+          확인
+        </button>
+      </ConfirmModal>
     </div>
   );
 };

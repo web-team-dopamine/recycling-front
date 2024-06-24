@@ -28,10 +28,10 @@ const ProtectionItem = ({
   // 좋아요 클릭
   const handleLikeClick = () => {
     if (isLoggedIn()) {
-      setLiked(true);
-      closeLikeModal();
+      setLiked((prevLiked) => !prevLiked); // Toggle liked state
+      closeLikeModal(); // Close modal if open
     } else {
-      openLikeModal();
+      openLikeModal(); // Open login modal if not logged in
     }
   };
 
