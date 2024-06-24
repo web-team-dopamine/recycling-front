@@ -71,7 +71,9 @@ const ProtectionItem = ({
           {title}
         </div>
         <p className="text-gray-700 text-sm mb-2 ">{nickname}</p>
-        <p className="text-gray-700 text-base mb-2 ">{date}</p>
+        <p className="text-gray-700 text-sm mb-2">
+          {`${date.getMonth() + 1}월 ${date.getDate()}일`}
+        </p>
       </div>
 
       {/* 좋아요 버튼 클릭 modal */}
