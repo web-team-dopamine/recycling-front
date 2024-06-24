@@ -5,7 +5,7 @@ const SearchInput = () => {
   const searchInput = useInput({ initialValue: '' });
 
   return (
-    <form className="max-w-md flex items-center justify-end">
+    <form className="max-w-md w-full flex items-center justify-end ">
       <div className="relative w-full">
         <input
           type="text"
