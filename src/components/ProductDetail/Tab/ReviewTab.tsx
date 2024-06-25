@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaChevronRight, FaChevronLeft } from 'react-icons/fa';
 import usePagination from '../../../hooks/usePagination';
 import ReviewInput from './Review/ReviewInput';
@@ -12,7 +12,6 @@ interface Review {
   likes: number;
 }
 
-// 임시 데이터
 const initialReviews: Review[] = [
   {
     nickname: '사용자1',
@@ -65,14 +64,33 @@ const initialReviews: Review[] = [
 ];
 
 const ReviewTab: React.FC = () => {
-  const itemsPerPage = 4; // 페이지당 표시할 리뷰 수
-  const [dummyReviews, setDummyReviews] = useState<Review[]>(initialReviews); // State for reviews
-
-  // usePagination hook 사용
+  const itemsPerPage = 4;
+  const [reviews, setReviews] = useState<Review[]>(initialReviews);
+  const [sortedReviews, setSortedReviews] = useState<Review[]>(initialReviews);
   const { currentPage, currentItems, totalPages, paginate } = usePagination(
-    dummyReviews,
+    sortedReviews,
     itemsPerPage,
   );
+  const [sortOption, setSortOption] = useState<'latest' | 'likes' | null>(null);
+
+  // 최신순 정렬 함수
+  const sortByDate = (a: Review, b: Review) => {
+    return new Date(b.datetime).getTime() - new Date(a.datetime).getTime();
+  };
+
+  // 좋아요 많은 순 정렬 함수
+  const sortByLikes = (a: Review, b: Review) => {
+    return b.likes - a.likes;
+  };
+
+  // 초기화 및 정렬 상태 변경 시 호출되는 훅
+  useEffect(() => {
+    if (sortOption === 'latest') {
+      setSortedReviews([...reviews].sort(sortByDate));
+    } else if (sortOption === 'likes') {
+      setSortedReviews([...reviews].sort(sortByLikes));
+    }
+  }, [sortOption, reviews]);
 
   // 리뷰 등록 핸들러
   const handleSubmitReview = (newReview: string) => {
@@ -85,25 +103,46 @@ const ReviewTab: React.FC = () => {
       likes: 0, // 좋아요 초기 값
     };
 
-    // 기존 리뷰 목록에 새 리뷰 추가
-    setDummyReviews([newReviewObject, ...dummyReviews]);
+    setReviews([newReviewObject, ...reviews]);
   };
 
   // 좋아요 클릭 핸들러
   const handleLikeClick = (index: number, isLiked: boolean) => {
-    const updatedReviews = [...dummyReviews];
+    const updatedReviews = [...reviews];
     const originalIndex = (currentPage - 1) * itemsPerPage + index;
     updatedReviews[originalIndex].likes += isLiked ? 1 : -1;
-    setDummyReviews(updatedReviews);
+    setReviews(updatedReviews);
+  };
+
+  // 정렬 옵션 변경 핸들러
+  const handleSortChange = (option: 'latest' | 'likes') => {
+    setSortOption(option);
   };
 
   return (
     <div>
-      <div className="text-xl font-bold ml-4">리뷰 {dummyReviews.length}개</div>
+      <div className="text-xl font-bold ml-4">리뷰 {reviews.length}개</div>
       <ReviewInput onSubmitReview={handleSubmitReview} charLimit={1000} />
 
       {/* 리뷰 목록 */}
-      <div className="mt-4">
+      <div className="m-4">
+        {/* 정렬 옵션 선택 */}
+        <div className="flex justify-start mr-4 mb-2">
+          <button
+            className={`mr-4 text-[#2E9093] text-m font-bold ${sortOption === 'latest' ? 'text-[#2E9093]' : 'text-gray-500'}`}
+            onClick={() => handleSortChange('latest')}
+          >
+            최신순
+          </button>
+          <button
+            className={`text-[#2E9093] text-m font-bold ${sortOption === 'likes' ? 'text-[#2E9093]' : 'text-gray-500'}`}
+            onClick={() => handleSortChange('likes')}
+          >
+            추천순
+          </button>
+        </div>
+
+        {/* 정렬된 리뷰 목록 출력 */}
         {currentItems.map((review, index) => (
           <ReviewItem
             key={index}
