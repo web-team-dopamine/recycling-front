@@ -1,9 +1,7 @@
 import React from 'react';
 import SearchInput from '../hooks/useSearch';
-import {
-  ProtectionItemList,
-  ProtectionPostBtn,
-} from '../components/ProtectionMain';
+import { PostButton } from '../components/Common';
+import ProtectionItemList from '../components/ProtectionMain/ProtectionItemList';
 
 interface ProtectionProps {
   isLoggedIn: boolean;
@@ -127,7 +125,7 @@ const Protection: React.FC<ProtectionProps> = ({ isLoggedIn, userType }) => {
     <div>
       {/* 검색창 */}
       <div className="mt-6 mb-6 justify-end flex ml-4 mr-20">
-        {userType === 'user' && <ProtectionPostBtn />}
+        {userType === 'user' && <PostButton url="/protection/post" />}
         <SearchInput />
       </div>
 

@@ -147,7 +147,7 @@ const CompanyMain: React.FC<ProductsProps> = ({ isLoggedIn, userType }) => {
 
       {/* search */}
       <div className="mb-6 justify-end flex ml-4 mr-20">
-        {userType === 'seller' && <PostButton />}
+        {userType === 'seller' && <PostButton url="/product/post" />}
         <SearchInput />
       </div>
 
