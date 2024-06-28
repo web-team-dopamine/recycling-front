@@ -46,3 +46,30 @@ export interface AddressData {
   zonecode: string;
   address: string;
 }
+export interface Product {
+  id: number;
+  companyName: string;
+  productImage: string;
+  productName: string;
+  price: number;
+  options: string;
+}
+
+export interface Order {
+  id: number;
+  products: Product[];
+}
+
+export interface OrderHistoryProps {
+  orders: Order[];
+}
+
+export interface OrderedItemProps {
+  companyName: string;
+  productImage: string;
+  productName: string;
+  price: number;
+  options: string;
+  onReviewClick: () => void;
+  onTrackClick: () => void;
+}
