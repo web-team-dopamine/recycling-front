@@ -41,3 +41,8 @@ declare type HeaderProps = {
   isLoggedIn: boolean;
   userType: 'admin' | 'seller' | 'user';
 };
+
+export interface AddressData {
+  zonecode: string;
+  address: string;
+}

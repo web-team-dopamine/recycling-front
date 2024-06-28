@@ -1,14 +1,31 @@
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
-  AddressInput,
   EmailInput,
   NicknameInput,
   PasswordInput,
   UserTypeSelection,
 } from '../components/Join';
+import { AddressInput } from '../components/Common';
 
 const Join = () => {
   const navigate = useNavigate();
+
+  // State variables for address input
+  const [zonecode, setZonecode] = useState('');
+  const [address, setAddress] = useState('');
+  const [detailAddress, setDetailAddress] = useState('');
+
+  // Function to handle address input change
+  const handleAddressChange = (
+    zonecode: string,
+    address: string,
+    detailAddress: string,
+  ) => {
+    setZonecode(zonecode);
+    setAddress(address);
+    setDetailAddress(detailAddress);
+  };
 
   return (
     <div className="flex items-center justify-center min-h-screen">
@@ -39,8 +56,19 @@ const Join = () => {
         </div>
 
         <div className="mb-6">
+          <label
+            htmlFor="nickname"
+            className="block text-gray-700 text-m font-bold mb-2"
+          >
+            주소<span className="text-red-600">*</span>
+          </label>
           {/* 주소 입력 */}
-          <AddressInput />
+          <AddressInput
+            zonecode={zonecode}
+            address={address}
+            detailAddress={detailAddress}
+            onChange={handleAddressChange}
+          />
         </div>
 
         {/* 가입 button */}

@@ -1,17 +1,26 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent } from 'react';
 import DaumPostcode from 'react-daum-postcode';
+import { AddressData } from '../../../util/types';
 
-const AddressInput = () => {
-  const [zonecode, setZonecode] = useState('');
-  const [address, setAddress] = useState('');
-  const [detailAddress, setDetailAddress] = useState('');
-  const [isOpen, setIsOpen] = useState(false);
+interface AddressInputProps {
+  zonecode: string;
+  address: string;
+  detailAddress: string;
+  onChange: (zonecode: string, address: string, detailAddress: string) => void;
+}
+
+const AddressInput: React.FC<AddressInputProps> = ({
+  zonecode,
+  address,
+  detailAddress,
+  onChange,
+}) => {
+  const [isOpen, setIsOpen] = React.useState(false);
 
   const completeHandler = (data: AddressData) => {
-    console.log(data);
     const { zonecode, address } = data;
-    setZonecode(zonecode);
-    setAddress(address);
+    onChange(zonecode, address, detailAddress);
+    setIsOpen(false);
   };
 
   const closeHandler = () => {
@@ -23,7 +32,7 @@ const AddressInput = () => {
   };
 
   const inputChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    setDetailAddress(e.target.value);
+    onChange(zonecode, address, e.target.value);
   };
 
   const postCodeStyle = {
@@ -33,16 +42,10 @@ const AddressInput = () => {
 
   return (
     <>
-      <label
-        htmlFor="nickname"
-        className="block text-gray-700 text-m font-bold mb-2"
-      >
-        주소<span className="text-red-600">*</span>
-      </label>
       <div className="flex flex-col">
         <div className="flex">
           <div
-            className="appearance-none border rounded-l py-2 px-3 text-gray-700 leading-tight placeholder:text-sm focus:outline-none focus:shadow-outline w-full"
+            className="appearance-none bg-white border rounded-l py-2 px-3 text-gray-700 leading-tight placeholder:text-sm focus:outline-none focus:shadow-outline w-full"
             onClick={toggleHandler}
           >
             {zonecode}
@@ -55,7 +58,7 @@ const AddressInput = () => {
             우편번호 검색
           </button>
         </div>
-        <div className="appearance-none border h-[35px] rounded-l mt-4 py-2 px-3 text-gray-700 leading-tight mb-4 placeholder:text-sm focus:outline-none focus:shadow-outline">
+        <div className="appearance-none bg-white border h-[35px] rounded-l mt-4 py-2 px-3 text-gray-700 leading-tight mb-4 placeholder:text-sm focus:outline-none focus:shadow-outline">
           {address}
         </div>
       </div>
