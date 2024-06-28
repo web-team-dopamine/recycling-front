@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { DataItem } from '../util/types';
 
 const usePagination = (data: DataItem[], itemsPerPage: number) => {
   const [currentPage, setCurrentPage] = useState(1);

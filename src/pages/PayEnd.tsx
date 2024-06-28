@@ -15,7 +15,7 @@ const PayEnd = () => {
           주문 및 배송 관련은{' '}
           <button
             className="underline hover:text-[#ACDACD]"
-            onClick={() => navigate('/mypage')}
+            onClick={() => navigate('/user/:id')}
           >
             마이페이지
           </button>
