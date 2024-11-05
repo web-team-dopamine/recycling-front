@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { BiLike } from 'react-icons/bi';
 import { useNavigate } from 'react-router-dom';
 import useModal from '../../hooks/useModal';
+import { ProtectionItemProps } from '../../util/types';
 
 const ProtectionItem = ({
   image,

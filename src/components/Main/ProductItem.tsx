@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { FaHeart, FaShoppingCart } from 'react-icons/fa'; // Importing icons for wishlist and cart
 import { useNavigate } from 'react-router-dom';
 import useModal from '../../hooks/useModal';
+import { ProductItemProps } from '../../util/types';
 
 const ProductItem = ({ image, title, company, price }: ProductItemProps) => {
   const navigate = useNavigate();
